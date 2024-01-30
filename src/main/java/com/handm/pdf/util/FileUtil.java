@@ -32,7 +32,7 @@ public class FileUtil {
         try {
             response.setContentType("application/octet-stream");
             response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, String.valueOf(StandardCharsets.UTF_8)));
-            doc.save(filename, pdf.getSaveFormat());
+            doc.save(response.getOutputStream(), pdf.getSaveFormat());
         } catch (Exception e) {
             log.error("Pdf 转 Word 失败...", e);
         } finally {
